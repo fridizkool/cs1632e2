@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RentACatTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">RentACatTest.java</span></div><h1>RentACatTest.java</h1><pre class="source lang-java linenums">import org.junit.Test;
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
+import org.mockito.*;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+<span class="fc" id="L11">public class RentACatTest {</span>
+
+	/**
+	 * The test fixture for this JUnit test. Test fixture: a fixed state of a set of
+	 * objects used as a baseline for running tests. The test fixture is initialized
+	 * using the @Before setUp method which runs before every test case. The test
+	 * fixture is removed using the @After tearDown method which runs after each
+	 * test case.
+	 */
+
+	RentACat r; // Object to test
+	Cat c1; // First mock cat object
+	Cat c2; // Second mock cat object
+	Cat c3; // Third mock cat object
+
+	@Before
+	public void setUp() throws Exception {
+		// Turn on automatic bug injection in the Cat class, to emulate a buggy Cat.
+		// Your unit tests should work regardless of these bugs if you mock all Cats.
+<span class="fc" id="L30">		Cat._bugInjectionOn = true;</span>
+
+		// INITIALIZE THE TEST FIXTURE
+		// 1. Create a new RentACat object and assign to r
+<span class="fc" id="L34">		r = RentACat.createInstance();</span>
+
+		// 2. Create a mock Cat with ID 1 and name &quot;Jennyanydots&quot;, assign to c1
+		// TODO: Fill in
+		
+		// 3. Create a mock Cat with ID 2 and name &quot;Old Deuteronomy&quot;, assign to c2
+		// TODO: Fill in
+
+		// 4. Create a mock Cat with ID 3 and name &quot;Mistoffelees&quot;, assign to c3
+		// TODO: Fill in
+		
+		// Hint: You will have to stub the mocked Cats to make them behave as if the ID
+		// is 1 and name is &quot;Jennyanydots&quot;, etc.
+<span class="fc" id="L47">	}</span>
+
+	@After
+	public void tearDown() throws Exception {
+		// Not necessary strictly speaking since the references will be overwritten in
+		// the next setUp call anyway and Java has automatic garbage collection.
+<span class="fc" id="L53">		r = null;</span>
+<span class="fc" id="L54">		c1 = null;</span>
+<span class="fc" id="L55">		c2 = null;</span>
+<span class="fc" id="L56">		c3 = null;</span>
+<span class="fc" id="L57">	}</span>
+
+	/**
+	 * Test case for Cat getCat(int id).
+	 * Preconditions: r has no cats.
+	 * Execution steps: Call getCat(2).
+	 * Postconditions: Return value is null.
+	 */
+
+	@Test
+	public void testGetCatNullNumCats0() {
+		// TODO
+<span class="fc" id="L69">	}</span>
+
+	/**
+	 * Test case for Cat getCat(int id).
+	 * Preconditions: c1, c2, and c3 are added to r using addCat(Cat c).
+	 * Execution steps: Call getCat(2).
+	 * Postconditions: Return value is not null.
+	 *                 Returned cat has an ID of 2.
+	 */
+	
+	@Test
+	public void testGetCatNumCats3() {
+		// TODO
+<span class="fc" id="L82">	}</span>
+
+	/**
+	 * Test case for boolean catAvailable(int id).
+	 * Preconditions: r has no cats.
+	 * Execution steps: Call catAvailable(2).
+	 * Postconditions: Return value is false.
+	 */
+
+	@Test
+	public void testCatAvailableFalseNumCats0() {
+		// TODO
+<span class="fc" id="L94">	}</span>
+
+	/**
+	 * Test case for boolean catAvailable(int id).
+	 * Preconditions: c1, c2, and c3 are added to r using addCat(Cat c).
+	 *                c3 is rented.
+	 *                c1 and c2 are not rented.
+	 * Execution steps: Call catAvailable(2).
+	 * Postconditions: Return value is true.
+	 */
+
+	@Test
+	public void testCatAvailableTrueNumCats3() {
+		// TODO
+<span class="fc" id="L108">	}</span>
+
+	/**
+	 * Test case for boolean catAvailable(int id).
+	 * Preconditions: c1, c2, and c3 are added to r using addCat(Cat c).
+	 *                c2 is rented.
+	 *                c1 and c3 are not rented.
+	 * Execution steps: Call catAvailable(2).
+	 * Postconditions: Return value is false.
+	 */
+	
+	@Test
+	public void testCatAvailableFalseNumCats3() {
+		// TODO
+<span class="fc" id="L122">	}</span>
+
+	/**
+	 * Test case for boolean catExists(int id).
+	 * Preconditions: r has no cats.
+	 * Execution steps: Call catExists(2).
+	 * Postconditions: Return value is false.
+	 */
+
+	@Test
+	public void testCatExistsFalseNumCats0() {
+		// TODO
+<span class="fc" id="L134">	}</span>
+
+	/**
+	 * Test case for boolean catExists(int id).
+	 * Preconditions: c1, c2, and c3 are added to r using addCat(Cat c).
+	 * Execution steps: Call catExists(2).
+	 * Postconditions: Return value is true.
+	 */
+	
+	@Test
+	public void testCatExistsTrueNumCats3() {
+		// TODO
+<span class="fc" id="L146">	}</span>
+
+	/**
+	 * Test case for String listCats().
+	 * Preconditions: r has no cats.
+	 * Execution steps: Call listCats().
+	 * Postconditions: Return value is &quot;&quot;.
+	 */
+
+	@Test
+	public void testListCatsNumCats0() {
+		// TODO
+<span class="fc" id="L158">	}</span>
+
+	/**
+	 * Test case for String listCats().
+	 * Preconditions: c1, c2, and c3 are added to r using addCat(Cat c).
+	 * Execution steps: Call listCats().
+	 * Postconditions: Return value is &quot;ID 1. Jennyanydots\nID 2. Old
+	 *                 Deuteronomy\nID 3. Mistoffelees\n&quot;.
+	 */
+	
+	@Test
+	public void testListCatsNumCats3() {
+		// TODO
+<span class="fc" id="L171">	}</span>
+
+	/**
+	 * Test case for boolean rentCat(int id).
+	 * Preconditions: r has no cats.
+	 * Execution steps: Call rentCat(2).
+	 * Postconditions: Return value is false.
+	 */
+
+	@Test
+	public void testRentCatFailureNumCats0() {
+		// TODO
+<span class="fc" id="L183">	}</span>
+
+	/**
+	 * Test case for boolean rentCat(int id).
+	 * Preconditions: c1, c2, and c3 are added to r using addCat(Cat c).
+	 *                c2 is rented.
+	 * Execution steps: Call rentCat(2).
+	 * Postconditions: Return value is false.
+	 *                 c1.rentCat(), c2.rentCat(), c3.rentCat() are never called.
+	 *                 
+	 * Hint: See Example/NoogieTest.java in testBadgerPlayCalled method to see an
+	 * example of behavior verification.
+	 */
+	
+	@Test
+	public void testRentCatFailureNumCats3() {
+		// TODO
+<span class="fc" id="L200">	}</span>
+
+	/**
+	 * Test case for boolean returnCat(int id).
+	 * Preconditions: r has no cats.
+	 * Execution steps: Call returnCat(2).
+	 * Postconditions: Return value is false.
+	 */
+
+	@Test
+	public void testReturnCatFailureNumCats0() {
+		// TODO
+<span class="fc" id="L212">	}</span>
+
+	/**
+	 * Test case for boolean returnCat(int id).
+	 * Preconditions: c1, c2, and c3 are added to r using addCat(Cat c).
+	 *                c2 is rented.
+	 * Execution steps: Call returnCat(2).
+	 * Postconditions: Return value is true.
+	 *                 c2.returnCat() is called exactly once.
+	 *                 c1.returnCat() and c3.returnCat are never called.
+	 *                 
+	 * Hint: See Example/NoogieTest.java in testBadgerPlayCalled method to see an
+	 * example of behavior verification.
+	 */
+	
+	@Test
+	public void testReturnCatNumCats3() {
+		// TODO
+<span class="fc" id="L230">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202101150304</span></div></body></html>
