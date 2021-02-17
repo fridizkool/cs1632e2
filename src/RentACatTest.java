@@ -34,13 +34,13 @@ public class RentACatTest {
 		r = RentACat.createInstance();
 
 		// 2. Create a mock Cat with ID 1 and name "Jennyanydots", assign to c1
-		c1 = new Cat(1, "Jennyanydots");
+		// TODO: Fill in
 		
 		// 3. Create a mock Cat with ID 2 and name "Old Deuteronomy", assign to c2
-		c2 = new Cat(2, "Old Deuteronomy");
+		// TODO: Fill in
 
 		// 4. Create a mock Cat with ID 3 and name "Mistoffelees", assign to c3
-		c3 = new Cat(3, "Mistoffelees");
+		// TODO: Fill in
 		
 		// Hint: You will have to stub the mocked Cats to make them behave as if the ID
 		// is 1 and name is "Jennyanydots", etc.
@@ -65,7 +65,7 @@ public class RentACatTest {
 
 	@Test
 	public void testGetCatNullNumCats0() {
-		r.getCat(2);
+		// TODO
 	}
 
 	/**
@@ -78,9 +78,7 @@ public class RentACatTest {
 	
 	@Test
 	public void testGetCatNumCats3() {
-		r.addCat(c1);
-		r.addCat(c2);
-		r.addCat(c3);
+		// TODO
 	}
 
 	/**
@@ -92,7 +90,7 @@ public class RentACatTest {
 
 	@Test
 	public void testCatAvailableFalseNumCats0() {
-		r.catAvailable(2);
+		// TODO
 	}
 
 	/**
@@ -106,13 +104,7 @@ public class RentACatTest {
 
 	@Test
 	public void testCatAvailableTrueNumCats3() {
-		r.addCat(c1);
-		r.addCat(c2);
-		r.addCat(c3);
-		r.rentCat(3);
-		r.returnCat(1);
-		r.returnCat(2);
-		r.catAvailable(2);
+		// TODO
 	}
 
 	/**
@@ -126,13 +118,7 @@ public class RentACatTest {
 	
 	@Test
 	public void testCatAvailableFalseNumCats3() {
-		r.addCat(c1);
-		r.addCat(c2);
-		r.addCat(c3);
-		r.rentCat(2);
-		r.returnCat(1);
-		r.returnCat(3);
-		r.catAvailable(2);
+		// TODO
 	}
 
 	/**
@@ -144,7 +130,7 @@ public class RentACatTest {
 
 	@Test
 	public void testCatExistsFalseNumCats0() {
-		r.catExists(2);
+		// TODO
 	}
 
 	/**
