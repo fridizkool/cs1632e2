@@ -27,7 +27,7 @@ public class RentACatTest {
 	public void setUp() throws Exception {
 		// Turn on automatic bug injection in the Cat class, to emulate a buggy Cat.
 		// Your unit tests should work regardless of these bugs if you mock all Cats.
-		Cat._bugInjectionOn = true;
+		Cat.bugInjectionOn = true;
 
 		// INITIALIZE THE TEST FIXTURE
 		// 1. Create a new RentACat object and assign to r
@@ -87,13 +87,11 @@ public class RentACatTest {
 	 */
 	@Test
 	public void testGetCatNumCats3() {
-		// Preconditon
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
-		// Execution
 		Cat ret = r.getCat(2);
-		// Postcondition
+
 		assertTrue(ret != null && ret.getId() == 2);
 	}
 
@@ -120,15 +118,12 @@ public class RentACatTest {
 
 	@Test
 	public void testCatAvailableTrueNumCats3() {
-		// Precondition
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
-		r.rentCat(c3.getId());
+		//r.rentCat(c3.getId());
+		Mockito.when(c3.getRented()).thenReturn(true);
 		
-		// Execution
-		
-		// Postcondition
 		assertTrue(r.catAvailable(2));
 	}
 
@@ -143,16 +138,12 @@ public class RentACatTest {
 	
 	@Test
 	public void testCatAvailableFalseNumCats3() {
-		// Precondition
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
-		r.rentCat(c2.getId());
-		
+		//r.rentCat(c2.getId());
 		Mockito.when(c2.getRented()).thenReturn(true);
-		// Execution
 		
-		// Postcondition
 		assertFalse(r.catAvailable(2));
 	}
 
@@ -165,11 +156,6 @@ public class RentACatTest {
 
 	@Test
 	public void testCatExistsFalseNumCats0() {
-		// Precondition
-		
-		// Execution
-		
-		//Postcondition
 		assertFalse(r.catExists(2));
 	}
 
@@ -182,14 +168,10 @@ public class RentACatTest {
 	
 	@Test
 	public void testCatExistsTrueNumCats3() {
-		// Precondition
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
 		
-		// Execution
-				
-		//Postcondition
 		assertTrue(r.catExists(2));
 	}
 
@@ -215,15 +197,14 @@ public class RentACatTest {
 	
 	@Test
 	public void testListCatsNumCats3() {
-		// Precondition
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
-
+		// needed?
 		Mockito.when(c1.getRented()).thenReturn(false);
 		Mockito.when(c2.getRented()).thenReturn(false);
 		Mockito.when(c3.getRented()).thenReturn(false);
-		// Postcondition
+
 		assertEquals("ID 1. Jennyanydots\nID 2. Old Deuteronomy\nID 3. Mistoffelees\n", r.listCats());
 	}
 
@@ -253,15 +234,16 @@ public class RentACatTest {
 	
 	@Test
 	public void testRentCatFailureNumCats3() {
-		// Precondition
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
-		r.rentCat(c2.getId());
-		
+		//r.rentCat(c2.getId());
 		Mockito.when(c2.getRented()).thenReturn(true);
-		// Postcondition
+
 		assertFalse(r.rentCat(2));
+		Mockito.verify(c1, Mockito.times(0)).rentCat();
+		Mockito.verify(c2, Mockito.times(0)).rentCat();
+		Mockito.verify(c3, Mockito.times(0)).rentCat();
 	}
 
 	/**
@@ -291,16 +273,15 @@ public class RentACatTest {
 	
 	@Test
 	public void testReturnCatNumCats3() {
-		// Precondition
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
-		r.rentCat(c2.getId());		
-		Mockito.when(c2.getRented()).thenReturn(false);
+//		r.rentCat(c2.getId());
+		Mockito.when(c2.getRented()).thenReturn(true);
 
+		assertTrue(r.returnCat(2));
 		Mockito.verify(c1, Mockito.times(0)).returnCat();
 		Mockito.verify(c2, Mockito.times(1)).returnCat();
 		Mockito.verify(c3, Mockito.times(0)).returnCat();
-		assertTrue(r.returnCat(2));
 	}
 }
